@@ -22,10 +22,10 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh 'docker build -t spring-clinic .'
-        sh 'docker run spring-clinic'
+        withDockerRegistry(credentialsId: 'docker', url: 'https://hub.docker.com') {
+          sh 'docker build .'
+        }
       }
     }
   }
 }
-
