@@ -19,8 +19,7 @@ node {
 
   stage('Deploy') {
     steps {
-      withDockerRegistry(credentialsId: 'docker', url: 
-'https://hub.docker.com') {
+      withDockerRegistry(credentialsId: 'docker', url: 'https://hub.docker.com') {
         sh 'docker build .'
         sh 'docker push'
       }
