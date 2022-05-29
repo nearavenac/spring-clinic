@@ -12,11 +12,6 @@ node {
     sh "./gradlew build"
   }
   
-  stage('Test'){
-    println 'Se ejecutan tests'
-    sh "./gradlew clean test"
-  }
-
   stage('Code Review'){
     println 'Se ejecuta análisis con SonarCloud'
     sh "set +x; ./gradlew sonarqube -Dsonar.login=${SONAR_TOKEN} -Dsonar.branch.name=feature-nicolasAravena-interfaz"
