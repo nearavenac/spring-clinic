@@ -18,7 +18,7 @@ node {
     env.PATH = "${dockerHome}/bin:${env.PATH}"
   }
   stage('Deploy') {
-    'Realizar deploy a partir de Dockerfile'
+    println 'Realizar deploy a partir de Dockerfile'
     sh 'docker build -t jenkins-lab .'
     sh 'docker run jenkins-lab'
   }
