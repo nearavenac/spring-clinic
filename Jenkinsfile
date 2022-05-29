@@ -21,13 +21,9 @@ pipeline {
       }
     }
     stage('Deploy') {
-      agent {
-        dockerfile true
-      }
       steps {
-        println 'Deploy de aplicación en contenedor'
-        // sh 'docker build .'
-        // sh 'docker push'
+        sh 'docker build -t spring-clinic .'
+        sh 'docker run spring-clinic'
       }
     }
   }
