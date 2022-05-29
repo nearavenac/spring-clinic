@@ -21,12 +21,15 @@ pipeline {
       }
     }
     stage('Deploy') {
+      agent {
+        dockerfile true
+      }
       steps {
-        withDockerRegistry(credentialsId: 'docker', url: 'https://hub.docker.com') {
-          sh 'docker build .'
-          sh 'docker push'
-        }
+        println 'Deploy de aplicación en contenedor'
+        // sh 'docker build .'
+        // sh 'docker push'
       }
     }
   }
 }
+
