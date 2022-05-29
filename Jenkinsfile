@@ -16,4 +16,14 @@ node {
     println 'Se ejecuta análisis con SonarCloud'
     sh "set +x; ./gradlew sonarqube -Dsonar.login=${SONAR_TOKEN} -Dsonar.branch.name=feature-nicolasAravena-interfaz"
   }
+
+  stage('Deploy') {
+    steps {
+      withDockerRegistry(credentialsId: 'docker', url: 
+'https://hub.docker.com') {
+        sh 'docker build .'
+        sh 'docker push'
+      }
+    }
+  }
 }
